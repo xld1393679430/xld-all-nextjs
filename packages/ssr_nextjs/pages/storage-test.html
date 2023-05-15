@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .light {
+            background-color: skyblue;
+        }
+
+        .dark {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="container light">我是一些文字</div>
+        <button id="themeBtn">切换主题</button>
+        <p id="tips">默认主题是light</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeBtnEl = document.getElementById('themeBtn')
+            const containerEl = document.querySelector("div.container")
+            const tipsEl = document.getElementById('tips')
+
+            let theme = getThemeStorage();
+            const translatedTheme = (curTheme) => {
+                return curTheme === 'light' ? 'dark' : 'light'
+            }
+
+            themeBtn.onclick = function () {
+                containerEl.classList.remove(theme === 'light' ?
+                    'light' : 'dark')
+                window.requestAnimationFrame(() => {
+                    theme = translatedTheme(theme)
+                    containerEl.classList.add(theme)
+                    setThemeStorage(theme)
+                })
+            }
+
+            window.addEventListener('storage', function () {
+                setTimeout(() => {
+                    let theme1 = getThemeStorage();
+                    console.log(theme, theme1)
+                    containerEl.classList.remove(
+                        theme === 'light' ?
+                        'light' : 'dark')
+                    window.requestAnimationFrame(() => {
+                        theme = translatedTheme(
+                            theme)
+                        containerEl.classList
+                            .add(theme)
+                    })
+                }, 0)
+            })
+
+
+
+            function setThemeStorage(theme) {
+                localStorage.setItem('theme', theme)
+            }
+
+            function getThemeStorage(theme) {
+                return localStorage.getItem('theme') || 'light'
+            }
+        })
+    </script>
+</body>
+
+</html>

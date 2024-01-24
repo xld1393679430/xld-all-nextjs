@@ -52,6 +52,9 @@ export default function Home() {
           <li>
             <Link href="/testFont">testFont</Link>
           </li>
+          <li>
+            <Link href="/testComponentServer">测试组件的服务端渲染</Link>
+          </li>
         </ul>
       </main>
     </div>

@@ -1,4 +1,10 @@
 {
+  "name": "xld-all-nextjs",
+  "version": "1.0.0",
   "private": true,
-  "workspaces": ["packages/*"]
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "dev:s1": "yarn workspace nextjs_koa dev",
+    "dev:s2": "yarn workspace nextjs-init dev"
+  }
 }

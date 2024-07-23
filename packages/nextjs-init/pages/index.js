@@ -55,6 +55,11 @@ export default function Home() {
           <li>
             <Link href="/testComponentServer">测试组件的服务端渲染</Link>
           </li>
+          <li>
+            <Link href="/testI18n" locale="cn">测试i18n--中文</Link>
+            <br />
+            <Link href="/testI18n" locale="en">测试i18n--英文</Link>
+          </li>
         </ul>
       </main>
     </div>
